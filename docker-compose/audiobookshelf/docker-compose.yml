@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: audiobookshelf
+    environment:
+      - AUDIOBOOKSHELF_UID=0 #change to match your server
+      - AUDIOBOOKSHELF_GID=999 #change to match your server
+    ports:
+      - 1347:80 #do not change :80
+    volumes:
+      - /media/usbhd1/docker/media/audiobooks:/audiobooks #map to your serverlocations
+      - /media/usbhd1/docker/media/podcasts:/podcasts #map to your serverlocations
+      - /media/usbhd1/docker/audiobookshelf/config:/config #map to your serverlocations
+      - /media/usbhd1/docker/audiobookshelf/metadata:/metadata #map to your serverlocations
+    restart: unless-stopped
