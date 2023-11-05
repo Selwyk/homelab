@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Berlin
+    volumes:
+      - /media/usbhd1/docker/bazarr:/config
+      - /media/usbhd1/docker/media/peliculas:/movies #optional
+      - /media/usbhd1/docker/media/series:/tv #optional
+    ports:
+      - 6767:6767
+    restart: unless-stopped
