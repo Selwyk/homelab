@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Berlin
+    volumes:
+      - /media/usbhd1/docker/radarr:/config
+      - /media/usbhd1/docker/media/peliculas:/movies #optional
+      - /media/usbhd1/docker/downloads:/downloads #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
