@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+    run:
+        container_name: adguardhome
+        environment:
+          - PUID=0
+          - PGID=999
+          - TZ=Europe/London
+        restart: unless-stopped
+        volumes:
+            - '/media/usbhd1/docker/adguard/work:/opt/adguardhome/work'
+            - '/media/usbhd1/docker/adguard:/opt/adguardhome/conf'
+        ports:
+            - '53:53/tcp'
+            - '53:53/udp'
+            - '8083:80/tcp'
+
+            - '3000:3000/tcp'
+        image: adguard/adguardhome
