@@ -14,6 +14,5 @@ services:
             - '53:53/tcp'
             - '53:53/udp'
             - '8083:80/tcp'
-
             - '3000:3000/tcp'
         image: adguard/adguardhome
