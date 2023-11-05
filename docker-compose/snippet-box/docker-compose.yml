@@ -1,0 +1,80 @@
+name: snippet-box
+services:
+  snippet-box:
+    command:
+      - node
+      - build/server.js
+    environment:
+      - NODE_ENV=production
+      - NODE_VERSION=14.18.1
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - YARN_VERSION=1.22.15
+    image: pawelmalak/snippet-box:latest
+    labels:
+      icon: https://raw.githubusercontent.com/pawelmalak/unraid-templates/master/templates/icons/snippet-box.png
+    ports:
+      - target: 5000
+        published: "5000"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /media/usbhd1/docker/snippet-box
+        target: /app/data
+    x-casaos:
+      envs:
+        - container: PATH
+          description:
+            en_us: ""
+        - container: NODE_VERSION
+          description:
+            en_us: ""
+        - container: YARN_VERSION
+          description:
+            en_us: ""
+        - container: NODE_ENV
+          description:
+            en_us: ""
+      ports:
+        - container: "5000"
+          description:
+            en_us: ""
+      volumes:
+        - container: /app/data
+          description:
+            en_us: ""
+    devices: []
+    cap_add: []
+    network_mode: default
+    privileged: false
+    container_name: ""
+    cpu_shares: 90
+    deploy:
+      resources:
+        limits:
+          memory: 15889M
+x-casaos:
+  architectures:
+    - amd64
+  author: CasaOS User
+  category: unknown
+  description:
+    en_us: ""
+  developer: unknown
+  icon: https://raw.githubusercontent.com/pawelmalak/unraid-templates/master/templates/icons/snippet-box.png
+  main: snippet-box
+  port_map: "5000"
+  scheme: http
+  store_app_id: snippet-box
+  tagline:
+    en_us: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  thumbnail: ""
+  tips:
+    custom: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  title:
+    en_us: snippet-box
+    custom: ""
+  hostname: ""
+  index: /
