@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+    transmission-openvpn:
+        cap_add:
+            - NET_ADMIN
+        volumes:
+            - /media/usbhd1/docker/downloads/transmission/:/data
+            - /media/usbhd1/docker/transmission/:/config
+        environment:
+            - PUID=0
+            - PGID=999
+            - TZ=Europe/Berlin
+            - OPENVPN_PROVIDER=PIA
+            - OPENVPN_CONFIG=france
+            - OPENVPN_USERNAME=username
+            - OPENVPN_PASSWORD=insecure
+            - LOCAL_NETWORK=192.168.0.0/16
+        restart: 'unless-stopped'
+        logging:
+            driver: json-file
+            options:
+                max-size: 10m
+        ports:
+            - 9091:9091
+        image: haugene/transmission-openvpn
