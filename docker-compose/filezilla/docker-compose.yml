@@ -1,0 +1,21 @@
+version: "3.3"
+
+services:
+
+  filezilla:
+    image: lscr.io/linuxserver/filezilla:latest
+    container_name: filezilla
+#    security_opt:
+#      - seccomp:unconfined #opcional solo para Docker Engine
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Madrid
+    volumes:
+      - /media/usbhd1/docker/filezilla:/config
+#      - /home/user/docker-data:/var/lib/docker
+#      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 3069:3000
+      - 3070:3001
+    restart: unless-stopped
