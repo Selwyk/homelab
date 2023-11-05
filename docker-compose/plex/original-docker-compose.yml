@@ -1,0 +1,18 @@
+version: "3"
+services:
+
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=0
+      - PGID=999
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+    volumes:
+      - /media/usbhd1/docker/plex:/config
+      - /media/usbhd1/docker/media/series:/tv
+      - /media/usbhd1/docker/media/peliculas:/movies
+      - /media/usbhd1/docker/media/music:/music
+    restart: unless-stopped
