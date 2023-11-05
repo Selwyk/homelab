@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  calibre:
+    image: lscr.io/linuxserver/calibre:latest
+    container_name: calibre
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Berlin
+      - PASSWORD= #optional
+      - CLI_ARGS= #optional
+    volumes:
+      - /media/usbhd1/docker/calibre:/config
+    ports:
+      - 8089:8080
+      - 8181:8181
+      - 8081:8081
+    restart: unless-stopped
