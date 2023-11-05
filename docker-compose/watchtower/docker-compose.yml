@@ -1,0 +1,59 @@
+name: watchtower-watchtower-1
+services:
+  watchtower-watchtower-1:
+    cpu_shares: 90
+    command: []
+    deploy:
+      resources:
+        limits:
+          memory: 15889M
+    environment:
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    image: containrrr/watchtower
+    labels:
+      icon: https://containrrr.dev/watchtower/images/logo-450px.png
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    x-casaos:
+      envs:
+        - container: PATH
+          description:
+            en_us: ""
+      volumes:
+        - container: /var/run/docker.sock
+          description:
+            en_us: ""
+    ports: []
+    devices: []
+    cap_add: []
+    network_mode: watchtower_default
+    privileged: false
+    container_name: ""
+x-casaos:
+  architectures:
+    - amd64
+  author: CasaOS User
+  category: unknown
+  description:
+    en_us: ""
+  developer: unknown
+  hostname: ""
+  icon: https://containrrr.dev/watchtower/images/logo-450px.png
+  index: /
+  main: watchtower-watchtower-1
+  port_map: ""
+  scheme: http
+  store_app_id: watchtower-watchtower-1
+  tagline:
+    en_us: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  thumbnail: ""
+  tips:
+    custom: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  title:
+    custom: ""
+    en_us: WatchTower
