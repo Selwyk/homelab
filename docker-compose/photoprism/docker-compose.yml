@@ -1,0 +1,334 @@
+name: photoprism-photoprism-1_old_old
+services:
+  photoprism-photoprism-1_old_old:
+    cpu_shares: 90
+    command:
+      - /opt/photoprism/bin/photoprism
+      - start
+    deploy:
+      resources:
+        limits:
+          memory: 15889M
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+      - DOCKER_ENV=prod
+      - DOCKER_TAG=231021
+      - LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
+      - PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/scripts:/opt/photoprism/bin
+      - PHOTOPRISM_ADMIN_PASSWORD=perelon47
+      - PHOTOPRISM_ADMIN_USER=admin
+      - PHOTOPRISM_ARCH=amd64
+      - PHOTOPRISM_ASSETS_PATH=/opt/photoprism/assets
+      - PHOTOPRISM_AUTH_MODE=password
+      - PHOTOPRISM_AUTO_IMPORT=150
+      - PHOTOPRISM_AUTO_INDEX=120
+      - PHOTOPRISM_BACKUP_PATH=/photoprism/storage/backups
+      - PHOTOPRISM_DATABASE_DRIVER=mysql
+      - PHOTOPRISM_DATABASE_NAME=photoprism
+      - PHOTOPRISM_DATABASE_PASSWORD=passphotomaria459
+      - PHOTOPRISM_DATABASE_SERVER=mariadb:3306
+      - PHOTOPRISM_DATABASE_USER=photoprism
+      - PHOTOPRISM_DEBUG=false
+      - PHOTOPRISM_DEFAULT_TLS=true
+      - PHOTOPRISM_DETECT_NSFW=false
+      - PHOTOPRISM_DISABLE_BACKUPS=false
+      - PHOTOPRISM_DISABLE_CHOWN=false
+      - PHOTOPRISM_DISABLE_CLASSIFICATION=false
+      - PHOTOPRISM_DISABLE_EXIFTOOL=false
+      - PHOTOPRISM_DISABLE_FACES=false
+      - PHOTOPRISM_DISABLE_PLACES=false
+      - PHOTOPRISM_DISABLE_RAW=false
+      - PHOTOPRISM_DISABLE_SETTINGS=false
+      - PHOTOPRISM_DISABLE_STS=true
+      - PHOTOPRISM_DISABLE_TENSORFLOW=false
+      - PHOTOPRISM_DISABLE_TLS=false
+      - PHOTOPRISM_DISABLE_VECTORS=false
+      - PHOTOPRISM_DISABLE_WEBDAV=false
+      - PHOTOPRISM_EXPERIMENTAL=false
+      - PHOTOPRISM_HTTP_COMPRESSION=gzip
+      - PHOTOPRISM_HTTP_HOST=0.0.0.0
+      - PHOTOPRISM_HTTP_PORT=2342
+      - PHOTOPRISM_IMPORT_PATH=/photoprism/import
+      - PHOTOPRISM_INIT=https
+      - PHOTOPRISM_JPEG_QUALITY=85
+      - PHOTOPRISM_JPEG_SIZE=7680
+      - PHOTOPRISM_LOG_FILENAME=/photoprism/storage/photoprism.log
+      - PHOTOPRISM_LOG_LEVEL=info
+      - PHOTOPRISM_ORIGINALS_LIMIT=5000
+      - PHOTOPRISM_ORIGINALS_PATH=/photoprism/originals
+      - PHOTOPRISM_PID_FILENAME=/photoprism/storage/photoprism.pid
+      - PHOTOPRISM_PUBLIC=false
+      - PHOTOPRISM_RAW_PRESETS=false
+      - PHOTOPRISM_READONLY=false
+      - PHOTOPRISM_SITE_AUTHOR=
+      - PHOTOPRISM_SITE_CAPTION=AI-Powered Photos App
+      - PHOTOPRISM_SITE_DESCRIPTION=
+      - PHOTOPRISM_SITE_URL=http://localhost:2342/
+      - PHOTOPRISM_STORAGE_PATH=/photoprism/storage
+      - PHOTOPRISM_THUMB_FILTER=lanczos
+      - PHOTOPRISM_THUMB_SIZE=2048
+      - PHOTOPRISM_THUMB_SIZE_UNCACHED=7680
+      - PHOTOPRISM_THUMB_UNCACHED=true
+      - PHOTOPRISM_UPLOAD_NSFW=true
+      - PHOTOPRISM_WAKEUP_INTERVAL=900
+      - PHOTOPRISM_WORKERS=0
+      - PROG=photoprism
+      - "PS1=\\u@:\\w$$ "
+      - TF_CPP_MIN_LOG_LEVEL=2
+      - TMPDIR=/tmp
+    image: photoprism/photoprism:latest
+    labels:
+      icon: https://pbs.twimg.com/profile_images/1465396268944011276/AeXqRrsn_400x400.png
+    ports:
+      - target: 2342
+        published: "2342"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /media/usbhd1/docker/media/Pictures
+        target: /photoprism/originals
+      - type: bind
+        source: /media/usbhd1/docker/photoprism/storage
+        target: /photoprism/storage
+    x-casaos:
+      envs:
+        - container: PHOTOPRISM_DISABLE_VECTORS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DATABASE_SERVER
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DATABASE_PASSWORD
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DATABASE_DRIVER
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_LOG_LEVEL
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_ADMIN_PASSWORD
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_SITE_DESCRIPTION
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_HTTP_COMPRESSION
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_RAW
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_ADMIN_USER
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DEFAULT_TLS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_SITE_URL
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_AUTH_MODE
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_ORIGINALS_LIMIT
+          description:
+            en_us: ""
+        - container: PATH
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_ARCH
+          description:
+            en_us: ""
+        - container: DOCKER_TAG
+          description:
+            en_us: ""
+        - container: DOCKER_ENV
+          description:
+            en_us: ""
+        - container: PS1
+          description:
+            en_us: ""
+        - container: LD_LIBRARY_PATH
+          description:
+            en_us: ""
+        - container: TMPDIR
+          description:
+            en_us: ""
+        - container: DEBIAN_FRONTEND
+          description:
+            en_us: ""
+        - container: TF_CPP_MIN_LOG_LEVEL
+          description:
+            en_us: ""
+        - container: PROG
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_ASSETS_PATH
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_IMPORT_PATH
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_ORIGINALS_PATH
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_STORAGE_PATH
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_BACKUP_PATH
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_LOG_FILENAME
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_PID_FILENAME
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DEBUG
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_PUBLIC
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_READONLY
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_UPLOAD_NSFW
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DETECT_NSFW
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_EXPERIMENTAL
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_SITE_CAPTION
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_SITE_AUTHOR
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_HTTP_HOST
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_HTTP_PORT
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_TLS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_STS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DATABASE_NAME
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DATABASE_USER
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_CHOWN
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_WEBDAV
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_SETTINGS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_BACKUPS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_EXIFTOOL
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_PLACES
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_TENSORFLOW
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_FACES
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_DISABLE_CLASSIFICATION
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_RAW_PRESETS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_THUMB_FILTER
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_THUMB_UNCACHED
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_THUMB_SIZE
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_THUMB_SIZE_UNCACHED
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_JPEG_SIZE
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_JPEG_QUALITY
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_WORKERS
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_WAKEUP_INTERVAL
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_AUTO_INDEX
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_AUTO_IMPORT
+          description:
+            en_us: ""
+        - container: PHOTOPRISM_INIT
+          description:
+            en_us: ""
+      ports:
+        - container: "2342"
+          description:
+            en_us: ""
+      volumes:
+        - container: /photoprism/originals
+          description:
+            en_us: ""
+        - container: /photoprism/storage
+          description:
+            en_us: ""
+    devices: []
+    cap_add: []
+    network_mode: photoprism_default
+    privileged: false
+    container_name: ""
+x-casaos:
+  architectures:
+    - amd64
+  author: CasaOS User
+  category: unknown
+  description:
+    en_us: ""
+  developer: unknown
+  hostname: ""
+  icon: https://pbs.twimg.com/profile_images/1465396268944011276/AeXqRrsn_400x400.png
+  index: /
+  main: photoprism-photoprism-1_old_old
+  port_map: "2342"
+  scheme: http
+  store_app_id: photoprism-photoprism-1_old_old
+  tagline:
+    en_us: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  thumbnail: ""
+  tips:
+    custom: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  title:
+    custom: ""
+    en_us: PhotoPrism
