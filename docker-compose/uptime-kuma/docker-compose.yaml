@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  uptime-kuma:
+    restart: always
+    ports:
+      - 3001:3001
+    volumes:
+      - /media/usbhd1/docker/uptime-kuma:/app/data
+    container_name: uptime-kuma
+    image: louislam/uptime-kuma:1
+    environment: []
+    networks: []
+    depends_on: []
+volumes:
+  uptime-kuma: {}
+networks: {}
