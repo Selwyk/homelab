@@ -9,8 +9,8 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /media/usbhd1/docker/radarr:/config
-      - /media/usbhd1/docker-media/media/peliculas:/movies #optional
-      - /media/usbhd1/docker-media/downloads:/downloads #optional
+      - /media/usbhd1/docker-data/media/peliculas:/movies #optional
+      - /media/usbhd1/docker-data/downloads:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
