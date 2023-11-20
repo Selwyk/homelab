@@ -6,13 +6,13 @@ services:
     container_name: plex
     network_mode: host
     environment:
-      - PUID=0
-      - PGID=999
+      #- PUID=1000
+      #- PGID=1000
       - VERSION=docker
       - PLEX_CLAIM= #optional
     volumes:
       - /media/usbhd1/docker/plex:/config
-      - /media/usbhd1/docker/media/series:/tv
-      - /media/usbhd1/docker/media/peliculas:/movies
-      - /media/usbhd1/docker/media/music:/music
+      - /media/usbhd1/docker-media/media/series:/tv
+      - /media/usbhd1/docker-media/media/peliculas:/movies
+      - /media/usbhd1/docker-media/media/music:/music
     restart: unless-stopped
