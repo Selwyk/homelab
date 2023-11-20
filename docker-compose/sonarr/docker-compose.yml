@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
     container_name: sonarr
@@ -10,8 +9,9 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /media/usbhd1/docker/sonarr:/config
-      - /media/usbhd1/docker-media/media/series:/tv #optional
-      - /media/usbhd1/docker-media/downloads:/downloads #optional
+      - /media/usbhd1/docker-data/media/series:/tv #optional
+      - /media/usbhd1/docker-data/downloads:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
+networks: {}
