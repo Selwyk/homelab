@@ -11,8 +11,8 @@ services:
     ports:
       - 1347:80 #do not change :80
     volumes:
-      - /media/usbhd1/docker/media/audiobooks:/audiobooks #map to your serverlocations
-      - /media/usbhd1/docker/media/podcasts:/podcasts #map to your serverlocations
+      - /media/usbhd1/docker-data/media/audiobooks:/audiobooks #map to your serverlocations
+      - /media/usbhd1/docker-data/media/podcasts:/podcasts #map to your serverlocations
       - /media/usbhd1/docker/audiobookshelf/config:/config #map to your serverlocations
       - /media/usbhd1/docker/audiobookshelf/metadata:/metadata #map to your serverlocations
     restart: unless-stopped
