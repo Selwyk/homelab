@@ -10,8 +10,8 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /media/usbhd1/docker/readarr:/config
-      - /media/usbhd1/docker/media/books:/books #optional
-      - /media/usbhd1/docker/downloads:/downloads #optional
+      - /media/usbhd1/docker-data/media/books:/books #optional
+      - /media/usbhd1/docker-data/downloads:/downloads #optional
     ports:
       - 8788:8787
     restart: unless-stopped
