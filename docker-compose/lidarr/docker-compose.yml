@@ -5,13 +5,13 @@ services:
     image: lscr.io/linuxserver/lidarr:latest
     container_name: lidarr
     environment:
-      - PUID=0
+      - PUID=1000
       - PGID=999
       - TZ=Europe/Berlin
     volumes:
       - /media/usbhd1/docker/lidarr:/config
-      - /media/usbhd1/docker/media/music:/music #optional
-      - /media/usbhd1/docker/downloads:/downloads #optional
+      - /media/usbhd1/docker-data/media/music:/music #optional
+      - /media/usbhd1/docker-data/downloads:/downloads #optional
     ports:
       - 8687:8686
     restart: unless-stopped
