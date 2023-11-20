@@ -10,8 +10,8 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /media/usbhd1/docker/bazarr:/config
-      - /media/usbhd1/docker-media/media/peliculas:/movies #optional
-      - /media/usbhd1/docker-media/media/series:/tv #optional
+      - /media/usbhd1/docker-data/media/peliculas:/movies #optional
+      - /media/usbhd1/docker-data/media/series:/tv #optional
     ports:
       - 6767:6767
     restart: unless-stopped
