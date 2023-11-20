@@ -10,8 +10,8 @@ services:
       - TZ=Europe/Berlin
     volumes:
       - /media/usbhd1/docker/sonarr:/config
-      - /media/usbhd1/docker/media/series:/tv #optional
-      - /media/usbhd1/docker/downloads:/downloads #optional
+      - /media/usbhd1/docker-media/media/series:/tv #optional
+      - /media/usbhd1/docker-media/downloads:/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
