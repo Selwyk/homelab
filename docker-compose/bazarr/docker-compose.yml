@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest
     container_name: bazarr
@@ -15,3 +14,4 @@ services:
     ports:
       - 6767:6767
     restart: unless-stopped
+networks: {}
