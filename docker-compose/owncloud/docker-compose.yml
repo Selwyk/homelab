@@ -22,14 +22,14 @@ services:
       - OWNCLOUD_MYSQL_UTF8MB4=true
       - OWNCLOUD_REDIS_ENABLED=true
       - OWNCLOUD_REDIS_HOST=redis
-      - OWNCLOUD_TRUSTED_DOMAINS=owncloud.vsuarez.es
+      - OWNCLOUD_TRUSTED_DOMAINS=owncloud.vsuarez.es, homelab
     healthcheck:
       test: ["CMD", "/usr/bin/healthcheck"]
       interval: 30s
       timeout: 10s
       retries: 5
     volumes:
-      - /media/usbhd1/docker/owncloud:/mnt/data
+      - /media/usbhd1/docker-data/owncloud:/mnt/data
 
   mariadb:
     image: mariadb:10.6 # minimum required ownCloud version is 10.9
@@ -47,7 +47,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - /media/usbhd1/docker/mysql:/var/lib/mysql
+      - /media/usbhd1/docker-data/mysql:/var/lib/mysql
 
   redis:
     image: redis:6
@@ -60,4 +60,4 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      -  /media/usbhd1/docker/redis:/data
+      -  /media/usbhd1/docker-data/redis:/data
