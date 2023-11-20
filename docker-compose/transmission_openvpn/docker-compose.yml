@@ -4,11 +4,11 @@ services:
         cap_add:
             - NET_ADMIN
         volumes:
-            - /media/usbhd1/docker/downloads/transmission/:/data
+            - /media/usbhd1/docker-data/downloads/:/data
             - /media/usbhd1/docker/transmission/:/config
         environment:
-            - PUID=0
-            - PGID=999
+            #- PUID=0
+            #- PGID=999
             - TZ=Europe/Berlin
             - OPENVPN_PROVIDER=PIA
             - OPENVPN_CONFIG=france
