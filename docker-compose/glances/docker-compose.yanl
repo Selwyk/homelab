@@ -1,0 +1,14 @@
+version: "3"
+services:
+  glances:
+    image: nicolargo/glances:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro
+    environment:
+      - GLANCES_OPT=-w
+    ports:
+      - 61208:61208
+      - 61209:61209
+    pid: host
+    restart: unless-stopped
