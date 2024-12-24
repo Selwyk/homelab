@@ -33,7 +33,7 @@ services:
       timeout: 10s
       retries: 5
     volumes:
-      - /media/usbhd1/docker-data/owncloud:/mnt/data
+      - /media/usbhd1/docker-data-backup/owncloud:/mnt/data
   mariadb:
     image: mariadb:10.6 # minimum required ownCloud version is 10.9
     container_name: owncloud_mariadb
@@ -58,7 +58,7 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - /media/usbhd1/docker-data/mysql:/var/lib/mysql
+      - /media/usbhd1/docker-data-backup/mysql:/var/lib/mysql
   redis:
     image: redis:6
     container_name: owncloud_redis
@@ -75,5 +75,5 @@ services:
       timeout: 5s
       retries: 5
     volumes:
-      - /media/usbhd1/docker-data/redis:/data
+      - /media/usbhd1/docker-data-backup/redis:/data
 networks: {}
