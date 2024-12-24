@@ -101,10 +101,10 @@ services:
     ## Storage Folders: "~" is a shortcut for your home directory, "." for the current directory
     volumes:
       # "/host/folder:/photoprism/folder"                # Example
-      - "/media/usbhd1/docker-media/media/Pictures:/photoprism/originals"               # Original media files (DO NOT REMOVE)
+      - "/media/usbhd1/docker-media-backup/media/Pictures:/photoprism/originals"               # Original media files (DO NOT REMOVE)
       # - "/example/family:/photoprism/originals/family" # *Additional* media folders can be mounted like this
       # - "~/Import:/photoprism/import"                  # *Optional* base folder from which files can be imported to originals
-      - "/media/usbhd1/docker-media/photoprism/storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
+      - "/media/usbhd1/docker-media-backup/photoprism/storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
     restart: unless-stopped
 
   ## Database Server (recommended)
