@@ -33,7 +33,7 @@ services:
     image: docker.io/library/redis:7
     restart: unless-stopped
     volumes:
-      - /media/usbhd1/docker-data/redisdata:/data
+      - /media/usbhd1/docker-data-backup/redisdata:/data
 
   db:
     image: docker.io/library/postgres:16
@@ -55,7 +55,7 @@ services:
       - "8010:8000"
     volumes:
       - /media/usbhd1/docker/paperless/data:/usr/src/paperless/data
-      - /media/usbhd1/docker-data/media/paperless:/usr/src/paperless/media
+      - /media/usbhd1/docker-data-backup/media/paperless:/usr/src/paperless/media
       - /media/usbhd1/docker/paperless/export:/usr/src/paperless/export
       - /media/usbhd1/docker/paperless/consume:/usr/src/paperless/consume
     environment:
