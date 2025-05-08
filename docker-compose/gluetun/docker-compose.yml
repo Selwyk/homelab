@@ -1,0 +1,94 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8089:8089 # qbittorrent web interface
+      - 6881:6881 # qbittorrent torrent port
+      - 6789:6789 # nzbget
+      - 8263:8263 # sabnzbd
+      - 8080:8080 # sabnzbd
+      #- 9696:9696 # prowlarr
+      - 4766:4711 # amule web ui
+      - 4712:4712 # amule remote gui, webserver, cmd ...
+      - 4662:4662 # amule ed2k tcp
+      - 4665:4665/udp # amule ed2k global search udp (tcp port +3)
+      - 4672:4672/udp # amule ed2k udp
+    volumes:
+      - /media/usbhd1/docker/gluetun:/gluetun
+    environment:
+      - VPN_SERVICE_PROVIDER=protonvpn
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=ZZZZZZXXXXXXXXXXXXXXXYYYYYYYYYYYY
+      - SERVER_COUNTRIES=Spain
+      - PORT_FORWARD_ONLY=on
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 60s
+      timeout: 20s
+      retries: 5
+    restart: unless-stopped
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    restart: unless-stopped
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Madrid
+      - WEBUI_PORT=8089
+      - TORRENTING_PORT=6881
+    volumes:
+      - /media/usbhd1/docker/qbittorrent:/config
+      - /data:/data
+      - /media/usbhd1/docker-data/downloads:/downloads
+    depends_on:
+      - gluetun
+    network_mode: service:gluetun
+    healthcheck:
+      test: ping -c 1 www.google.com || exit 1
+      interval: 60s
+      retries: 3
+      start_period: 20s
+      timeout: 10s
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Berlin
+    volumes:
+      - /media/usbhd1/docker/nzbget:/config
+      - /media/usbhd1/docker-data/downloads:/downloads #optional
+      - /media/usbhd1/docker-data/incomplete-downloads:/incomplete-downloads #optional
+    depends_on:
+      - gluetun
+    network_mode: service:gluetun
+    restart: unless-stopped
+  amule:
+    image: ngosang/amule
+    container_name: amule
+    environment:
+      - PUID=0
+      - PGID=999
+      - TZ=Europe/Berlin
+      - GUI_PWD=i!57KQq9nTCj&kB*#
+      - WEBUI_PWD=i!57KQq9nTCj&kB*#
+      - MOD_AUTO_RESTART_ENABLED=true
+      - MOD_AUTO_RESTART_CRON=0 6 * * *
+      - MOD_AUTO_SHARE_ENABLED=false
+      - MOD_AUTO_SHARE_DIRECTORIES=/incoming;/my_movies
+      - MOD_FIX_KAD_GRAPH_ENABLED=true
+      - MOD_FIX_KAD_BOOTSTRAP_ENABLED=true
+    volumes:
+      - /media/usbhd1/docker/amule:/home/amule/.aMule
+      - /media/usbhd1/docker-data/downloads/amule:/incoming
+      - /media/usbhd1/docker-data/temp:/temp
+    depends_on:
+      - gluetun
+    network_mode: service:gluetun
+    restart: unless-stopped
