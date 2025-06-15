@@ -22,7 +22,7 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER=protonvpn
       - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=ZZZZZZXXXXXXXXXXXXXXXYYYYYYYYYYYY
+      - WIREGUARD_PRIVATE_KEY=xxxxxxxxxxxxxxxxxxxx
       - SERVER_COUNTRIES=Spain
       - PORT_FORWARD_ONLY=on
     healthcheck:
